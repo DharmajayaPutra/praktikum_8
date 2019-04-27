@@ -6,7 +6,7 @@ class Anggota extends CI_Controller
     {
         parent::__construct();
 
-        $this->load->model('AnggotaaModel');
+        $this->load->model('AnggotaModel');
     }
 
     public function index()
