@@ -38,6 +38,13 @@ class Auth extends CI_Controller
                 ];
                 $this->session->set_userdata($data);
 
+                date_default_timezone_set('Asia/Jakarta');
+                $now = date('Y-m-d H:i:s');
+                $last_login = array(
+                    'Last_Login' => $now
+                );
+                $this->db->update('Petugas', $last_login);
+
                 redirect('petugas');
             } else {
                 $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Wrong Password!</div>');
