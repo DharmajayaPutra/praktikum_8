@@ -43,6 +43,8 @@ class Auth extends CI_Controller
                 $last_login = array(
                     'Last_Login' => $now
                 );
+                //$this->db->set('Last_Login', false);
+                $this->db->where('Kd_petugas', $data['Kd_Petugas']);
                 $this->db->update('Petugas', $last_login);
 
                 redirect('petugas');

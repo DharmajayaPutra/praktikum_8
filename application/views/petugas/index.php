@@ -41,7 +41,7 @@
                                 <td><?= $row['Username']; ?></td>
                                 <td><?= $row['Password']; ?></td>
                                 <td><?= $row['Last_Login']; ?></td>
-                                <td><a href="<?= base_url('petugas/edit'); ?>" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-user-edit"></i> Edit</a> <a href="<?= base_url('petugas/delete'); ?>" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-user-times"></i> Delete</a></td>
+                                <td><a href="<?= base_url('petugas/edit'); ?>" class="d-none d-sm-inline-block btn btn-sm btn-warning shadow-sm"><i class="fas fa-user-edit"></i> Edit</a> <a href="<?= base_url('petugas/delete'); ?>" class="d-none d-sm-inline-block btn btn-sm btn-danger shadow-sm"><i class="fas fa-user-times"></i> Delete</a></td>
                             </tr>
                         <?php endforeach; ?>
                     </tbody>
