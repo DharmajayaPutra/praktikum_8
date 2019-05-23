@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class Petugas extends CI_Controller
+class Anggota extends CI_Controller
 {
     public function __construct()
     {
@@ -12,12 +12,13 @@ class Petugas extends CI_Controller
     public function index()
     {
         $data['title'] = 'Admin Perpustakaan';
+        $data['list_anggota'] = $this->db->get('Anggota')->result_array();
+
         $data['Petugas'] = $this->db->get_where('Petugas', ['Username' => $this->session->userdata('Username')])->row_array();
 
-        $data['list_petugas'] = $this->db->get('Petugas')->result_array();
 
         $this->load->view('templates/admin_header', $data);
-        $this->load->view('petugas/index', $data);
+        $this->load->view('anggota/index', $data);
         $this->load->view('templates/admin_footer', $data);
     }
 
@@ -26,39 +27,37 @@ class Petugas extends CI_Controller
         $data['title'] = 'Admin Perpustakaan';
         $data['Petugas'] = $this->db->get_where('Petugas', ['Username' => $this->session->userdata('Username')])->row_array();
 
+
         $this->load->view('templates/admin_header', $data);
-        $this->load->view('petugas/create', $data);
+        $this->load->view('anggota/create', $data);
         $this->load->view('templates/admin_footer', $data);
     }
 
     public function add()
     {
         $this->form_validation->set_rules('fullname', 'Name', 'trim|required|max_length[64]');
-        $this->form_validation->set_rules('address', 'Address', 'trim|required|max_length[64]');
-        $this->form_validation->set_rules('email', 'Email', 'trim|required|valid_email|is_unique[Petugas . Username]');
-        $this->form_validation->set_rules('password1', 'Password', 'trim|required|matches[password2]');
-        $this->form_validation->set_rules('password2', 'Password', 'trim|required|matches[password1]', [
-            'matches' => 'Password dont match!'
-        ]);
+        $this->form_validation->set_rules('prodi', 'Program Studi', 'trim|required|max_length[64]');
+        $this->form_validation->set_rules('jenjang', 'Jenjang Pendidikan', 'trim|required|max_length[2]');
+        $this->form_validation->set_rules('alamat', 'Password', 'trim|required|max_length[64]');
 
         if ($this->form_validation->run() == false) {
             $data['title'] = 'Admin Perpustakaan';
             $data['Petugas'] = $this->db->get_where('Petugas', ['Username' => $this->session->userdata('Username')])->row_array();
 
             $this->load->view('templates/admin_header', $data);
-            $this->load->view('petugas/create', $data);
+            $this->load->view('anggota/create', $data);
             $this->load->view('templates/admin_footer', $data);
         } else {
             $data = [
                 'Nama' => $this->input->post('fullname'),
-                'Alamat' => $this->input->post('address'),
-                'Username' => $this->input->post('email'),
-                'Password' => md5($this->input->post('password2'))
+                'Prodi' => $this->input->post('prodi'),
+                'Jenjang' => $this->input->post('jenjang'),
+                'Alamat' => md5($this->input->post('alamat'))
             ];
 
-            $this->db->insert('Petugas', $data);
+            $this->db->insert('Anggota', $data);
             $this->session->set_flashdata('message', '<div class ="alert alert-success"  role ="alert" >Successfully Add Data Petugas</div>');
-            redirect('petugas/create');
+            redirect('anggota/create');
         }
     }
 

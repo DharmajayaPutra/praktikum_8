@@ -44,19 +44,19 @@
 
             <!-- Nav Item - Dashboard -->
             <li class="nav-item">
-                <a class="nav-link" href="index.html">
+                <a class="nav-link" href="<?= base_url('petugas/index'); ?>">
                     <i class="fas fa-users-cog"></i>
                     <span>Data Petugas</span></a>
             </li>
 
             <li class="nav-item">
-                <a class="nav-link" href="index.html">
+                <a class="nav-link" href="<?= base_url('anggota/index'); ?>">
                     <i class="fas fa-user-tag"></i>
                     <span>Data Anggota</span></a>
             </li>
 
             <li class="nav-item">
-                <a class="nav-link" href="index.html">
+                <a class="nav-link" href="<?= base_url('buku/index'); ?>">
                     <i class="fas fa-book-open"></i>
                     <span>Data Buku</span></a>
             </li>

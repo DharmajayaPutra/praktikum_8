@@ -25,8 +25,8 @@
             <input type="password" class="form-control form-control-user" id="password2" name="password2" placeholder="Confirm Password">
             <?= form_error('password2', '<small class="text-danger pl-3">', '</small>'); ?>
         </div>
-        <button type="submit" class="btn btn-primary btn-user btn-block">
-            Crete Account
+        <button type="submit" class="btn btn-success btn-user btn-block">
+            Create Account
         </button>
     </form>
 
